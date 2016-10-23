@@ -1,0 +1,31 @@
+<!DOCTYPE html>	
+<html>
+<head>
+	<title>{{ tittle }}</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+</head>
+<body>
+	<h1>Hola</h1>
+
+	<a href="{% url 'new_product' %}"> Registrar Producto</a>
+
+	<ul>
+		{% for pr in product %}	
+
+		<li>
+			{{ pr.name}}
+
+			{%if pr.image %}
+			<img src="{{ pr.image.url }}">
+			{% endif %}
+
+			<a href="{% url 'product_detail' pr.pk %}">link</a>
+			
+		</li>
+
+		{% endfor %}
+	</ul>
+
+</body>
+</html>
